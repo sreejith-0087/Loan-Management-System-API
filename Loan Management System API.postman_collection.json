@@ -1,0 +1,569 @@
+{
+	"info": {
+		"_postman_id": "be298fa7-747a-4b11-a1c1-bc917dcf82e5",
+		"name": "Loan Management System API",
+		"description": "**Objective**\n\n  \nThe Loan Management System is a Django-based REST API designed to manage loans with  \nuser-defined monthly compound interest. The system provides role-based authentication,  \nautomatic interest calculations, and loan repayment schedules. It supports loan foreclosure,  \nallowing users to settle loans before tenure completion with adjusted interest calculations. The  \nsystem is built using Django and Django REST Framework (DRF), with authentication  \nmanaged via JWT and OTP verification through Nodemailer. EndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41729079"
+	},
+	"item": [
+		{
+			"name": "User Authentication",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"sreejith\",\r\n    \"email\": \"sreejith.s.8700@gmail.com\",\r\n    \"password\": \"Test@1234\",\r\n    \"confirm_password\": \"Test@1234\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify OTP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sreejith.s.8700@gmail.com\",\r\n    \"otp\": \"453323\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/verify-otp/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"verify-otp",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"email\": \"sreejith.s.8700@gmail.com\",\r\n\"password\": \"Test@1234\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0MTUwMzAyOCwiaWF0IjoxNzQwODk4MjI4LCJqdGkiOiIwM2Q5NDExN2ZkZGQ0YTA1YjYxYjQyYzgyMGM5NzQxMCIsInVzZXJfaWQiOjF9.1cxDghHeonFMSfvKvR8kv4dr5mn0qHNF23hofFsNDCE\"}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/token/refresh/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"token",
+								"refresh",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"adminuser\",\r\n  \"password\": \"Admin@123\",\r\n  \"email\": \"sreejith.s.official9@gmail.com\",\r\n  \"role\": \"admin\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Verify OTP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"sreejith.s.official9@gmail.com\",\r\n    \"otp\": \"276700\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/verify-otp/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"verify-otp",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"email\": \"sreejith.s.official9@gmail.com\",\r\n\"password\": \"Admin@123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Loan Management",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Get All Loans",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxNTA0ODA2LCJpYXQiOjE3NDA5MDAwMDYsImp0aSI6IjMxN2E4ZDllZTM4ODRkNzQ5YTNmNjhkZTgyNGJlNDlhIiwidXNlcl9pZCI6Mn0.GqhSw_9B9Mc2VEsi3mQeh_jIOy4iUj4VP3KDhHiHXtg",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/loans/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"loans",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Apply for a Loan (User Only)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxNTA0ODA2LCJpYXQiOjE3NDA5MDAwMDYsImp0aSI6IjMxN2E4ZDllZTM4ODRkNzQ5YTNmNjhkZTgyNGJlNDlhIiwidXNlcl9pZCI6Mn0.GqhSw_9B9Mc2VEsi3mQeh_jIOy4iUj4VP3KDhHiHXtg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"amount\": 10000,\r\n  \"tenure\": 12,\r\n  \"interest_rate\": 10\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/loans/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"loans",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create Loan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxNTAzMDkwLCJpYXQiOjE3NDA4OTgyMjgsImp0aSI6ImUzM2JkNTE5ZGYyNDRjOGQ4MWIyOTc2ZWYwZDIwOWYwIiwidXNlcl9pZCI6MX0.iNSxxaoy30WOv7ZwEmj3Bz3aKPaVZF_e7eqRnaRdqD0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"amount\": 24000,\r\n \"tenure\": 12, \r\n \"interest_rate\": 10\r\n }"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/loans/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"loans",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Loans",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxNTAzMDkwLCJpYXQiOjE3NDA4OTgyMjgsImp0aSI6ImUzM2JkNTE5ZGYyNDRjOGQ4MWIyOTc2ZWYwZDIwOWYwIiwidXNlcl9pZCI6MX0.iNSxxaoy30WOv7ZwEmj3Bz3aKPaVZF_e7eqRnaRdqD0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/loans/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"loans",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Loan Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxNTAzMDkwLCJpYXQiOjE3NDA4OTgyMjgsImp0aSI6ImUzM2JkNTE5ZGYyNDRjOGQ4MWIyOTc2ZWYwZDIwOWYwIiwidXNlcl9pZCI6MX0.iNSxxaoy30WOv7ZwEmj3Bz3aKPaVZF_e7eqRnaRdqD0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/loans/2/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"loans",
+								"2",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Foreclose Loan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxNTAzMDkwLCJpYXQiOjE3NDA4OTgyMjgsImp0aSI6ImUzM2JkNTE5ZGYyNDRjOGQ4MWIyOTc2ZWYwZDIwOWYwIiwidXNlcl9pZCI6MX0.iNSxxaoy30WOv7ZwEmj3Bz3aKPaVZF_e7eqRnaRdqD0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/loans/1/foreclose/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"loans",
+								"1",
+								"foreclose",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Transactions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxNTAzMDkwLCJpYXQiOjE3NDA4OTgyMjgsImp0aSI6ImUzM2JkNTE5ZGYyNDRjOGQ4MWIyOTc2ZWYwZDIwOWYwIiwidXNlcl9pZCI6MX0.iNSxxaoy30WOv7ZwEmj3Bz3aKPaVZF_e7eqRnaRdqD0",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/transactions/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"transactions",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
