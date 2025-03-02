@@ -29,8 +29,8 @@ Ensure you have the following installed:
 
 ### 1. Clone the Repository
 ```
-git clone https://github.com/your-repo/loan-management-system.git
-cd loan-management-system
+git clone https://github.com/sreejith-0087/Loan-Management-System-API.git
+cd Loan-Management-System-API
 ```
 
 ### 2. Create and Activate Virtual Environment
@@ -84,12 +84,11 @@ API will be available at `http://127.0.0.1:8000/api/`
 | POST | `/api/verify-otp/` | Verify OTP for email authentication |
 
 ### 2. Loan Management
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/loan/apply/` | Apply for a loan |
-| GET | `/api/loan/list/` | List all loans (Admin only) |
-| GET | `/api/loan/user/` | List user-specific loans |
-| POST | `/api/loan/foreclose/` | Foreclose a loan |
+| Method | Endpoint                     | Description |
+|--------|------------------------------|-------------|
+| POST | `/api/loans/`                | Apply for a loan |
+| GET | `/api/loans/`                | List all loans (Admin only) |
+| POST | `/api/loans/{id}/foreclose/` | Foreclose a loan |
 
 ---
 
