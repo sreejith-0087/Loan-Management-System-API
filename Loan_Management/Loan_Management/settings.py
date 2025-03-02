@@ -103,28 +103,28 @@ WSGI_APPLICATION = 'Loan_Management.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'Loan_db',
-#         'USER': 'postgres',
-#         'PASSWORD': '12345',
-#         'HOST': 'localhost',
-#         'PORT': '1212',
-#     }
-# }
-
-
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "loan_db_5g4b",
-        "USER": "loan_db_5g4b_user",
-        "PASSWORD": "QqgWzXpLqaXdIwPuCn7gZheU0CNlIz7e",
-        "HOST": "dpg-cv23mmbtq21c73dcrr20-a.oregon-postgres.render.com",
-        "PORT": "5432",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Loan_db',
+        'USER': 'postgres',
+        'PASSWORD': '12345',
+        'HOST': 'localhost',
+        'PORT': '1212',
     }
 }
+
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "loan_db_5g4b",
+#         "USER": "loan_db_5g4b_user",
+#         "PASSWORD": "QqgWzXpLqaXdIwPuCn7gZheU0CNlIz7e",
+#         "HOST": "dpg-cv23mmbtq21c73dcrr20-a.oregon-postgres.render.com",
+#         "PORT": "5432",
+#     }
+# }
 
 
 
