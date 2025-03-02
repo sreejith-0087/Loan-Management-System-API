@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-giy_b$r-v4+)fav6@*_6%-iko*^w+#!js8hmgbv#tzd2ufx@h)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "127.0.0.1",  # Local development
+    "localhost",  # Local development
+    "loan-management-system-api-goul.onrender.com",  # Render Deployment
+]
 
 
 # Application definition
